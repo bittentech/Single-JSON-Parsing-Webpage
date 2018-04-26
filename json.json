@@ -1,0 +1,68 @@
+{
+  "gradesList": [
+    {
+      "name": "Grade 11",
+      "subjectList": [
+        {
+          "name": "Science",
+          "chapterList": [
+            {
+              "name": "Electric Charge",
+              "questionList": [
+                {
+                  "question": "What is charge?",
+                  "answer": "Electric Charge is that physical property of matter due to which the other matter experience a force when matters are placed in electromagnetic field."
+                },
+                {
+                  "question": " How much positive and negative charge is there in a cup of water?",
+                  "answer": "The number of molecules in one cup of water is (250/18) × 6.02 × 1023"
+                }
+              ]
+            }
+          ]
+        },
+{
+          "name": "Mathematics",
+          "chapterList": [
+            {
+              "name": "Equation of line",
+              "questionList": [
+                {
+                  "question": "What is the slope of x=0?",
+                  "answer": "Infinite"
+                },
+                {
+                  "question": " What is the slope of y=0?",
+                  "answer": "Zero"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grade 12",
+      "subjectList": [
+        {
+          "name": "Social Studies",
+          "chapterList": [
+            {
+              "name": "Rulers of USA",
+              "questionList": [
+                {
+                  "question": "Who controlled the colony of New York before the English?",
+                  "answer": "The Dutch"
+                },
+                {
+                  "question": " Who was the founder of New York and New Jersey?",
+                  "answer": "The Duke of York"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

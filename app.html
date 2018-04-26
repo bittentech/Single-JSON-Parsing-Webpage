@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>
+Parso JSON
+</title>
+</head>
+<body>
+<script>
+var data=new Array();
+</script>
+<div class='signup'>
+<h4>Signup</h4>
+<input type='text' name='username' id='user'>
+<input type='password' name='password' id='pass'>
+
+<button id='signup'>Signup</button>
+<div id='d1'></div>
+</div>
+
+<div class='login'>
+<h4>Login</h4>
+<input type='text' name='lusername' id='luser'>
+<input type='password' name='lpassword' id='lpass'>
+
+<button id='login'>Login</button>
+<div id='d1'></div>
+</div>
+
+<div class='content'>
+<h4>Login</h4>
+<input type='text' name='lusername' id='luser'>
+<input type='password' name='lpassword' id='lpass'>
+
+<button id='login'>Login</button>
+<div id='d1'></div>
+</div>
+<script>
+$(".login").hide();
+$('#signup').click(function(){
+	var user=$("#user").val();
+	var pass=$("#pass").val();
+	data.push(user);
+	data.push(pass);
+	$("#d1").html("User added!");
+	$(".login").show();
+});
+var f=0;
+$('#login').click(function(){
+	var user=$("#luser").val();
+	var pass=$("#lpass").val();
+	for(var i=0;i<data.length;i++)
+	{
+
+		if(data[i]==user)
+		{
+			
+			if(data[i+1]==pass)
+			{
+				
+				alert("successfull!");
+				f=1;
+				break;
+			}
+			
+		}
+		
+	}
+	if(f==0)
+			alert("Incorrect credentials");
+	
+	
+});
+</script>
+</body>
+</html>
