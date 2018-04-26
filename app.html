@@ -82,10 +82,15 @@ var data=new Array();
 <div id='d1'></div>
 </div-->
 
-<div class='content'>
+<div class='content' style="border:2px solid black;">
 
 <div class='left-nav' align='left' style="border:2px solid black; margin:10px;padding :10px;">
 <h2><b><center>Content</center></b></h2>
+
+
+</div>
+<div class='right-nav' style="border:2px solid black; margin:10px;padding :10px;">
+<h2><b><center>Question/Answer</center></b></h2>
 
 
 </div>
@@ -137,41 +142,98 @@ $('#login').click(function(){
 </script>
 <script>
 
-    $(function() {
+$(function() {
 
 
-
-
-   $.getJSON('json.json', function(data) {
-    var i1=0;
-       $.each(data.gradesList, function(i, f) {
+	var i1=0;
+	var j=0;
+	var k=0;
+	var l=0;
+   	$.getJSON('json.json', function(data) {
+   		
+       	$.each(data.gradesList, function(i, f) {
        	var dgrade=document.createElement("div");
        	dgrade.setAttribute("id","dgrade"+i1);
        	var grade=document.createElement("li");
        	grade.setAttribute("id","grade"+i1);
-      
+       	grade.setAttribute("onclick","showsub(this.id)");
        	grade.innerHTML=f.name;
        	document.getElementsByClassName("left-nav")[0].appendChild(dgrade);
-	document.getElementById("dgrade"+i1).appendChild(grade);
-	var j=0;
- $.each(data.gradesList[i1].subjectList, function(i, f) {
- 	
- 		var dsub=document.createElement("div");
- 			dsub.setAttribute("id","dsub"+j);
-       	var subjects=document.createElement("li");
-       	subjects.setAttribute("id","sub"+j);
-       	subjects.innerHTML=f.name;
-       	subjects.setAttribute("style","display:none;");
-       	document.getElementById("grade"+i1).appendChild(dsub);
-            document.getElementById("dsub"+j).appendChild(subjects);
-           j++;
-       });
+		document.getElementById("dgrade"+i1).appendChild(grade);
+		var dsub=document.createElement("div");
+		dsub.setAttribute("id","dsub"+i1);
+		document.getElementById("grade"+i1).appendChild(dsub);
+		var p=0;
+ 		$.each(data.gradesList[i1].subjectList, function(i, f) {
+       		var subjects=document.createElement("li");
+       		subjects.setAttribute("class","sub"+i1);
+       		subjects.setAttribute("onclick","showchap(this.id)");
+       		subjects.innerHTML=f.name;
+       		subjects.setAttribute("style","display:none;");
+            document.getElementById("dsub"+i1).appendChild(subjects);
+           	var dchap=document.createElement("div");
+           	dchap.setAttribute("id","dchap"+j);
+          
+           	$('.sub'+i1).each(function(i, obj) {
+    				obj.appendChild(dchap);
+			});
+           	l++;
+           		
+
+           		$.each(data.gradesList[i1].subjectList[p].chapterList, function(i, f) {
+       			var chap=document.createElement("li");
+       			chap.setAttribute("class","chap"+i1);
+       			chap.innerHTML=f.name;
+       			chap.setAttribute("onclick","showques(this.id)");
+       			chap.setAttribute("style","display:none;");
+            	document.getElementById("dchap"+k).appendChild(chap);
+            	var dques=document.createElement("div");
+           		dques.setAttribute("id","dques"+j);
+           		document.getElementsByClassName("right-nav")[0].appendChild(dques);
+           		
+
+           			var q=0;
+           			
+            		$.each(data.gradesList[i1].subjectList[p].chapterList[q].questionList, function(i, f) {
+       				
+       				var ques=document.createElement("div");
+       				ques.setAttribute("id","ques"+k);
+       				ques.innerHTML="Q)."+f.question+"<br>Ans)."+f.answer;
+
+       				ques.setAttribute("style","display:none;");
+            		document.getElementById("dques"+k).appendChild(ques);
+            		
+
+            		q++;
+            		});
+            	p++;
+           		k++;
+       			});
+
+           	j++;
+       		});
+
  		i1++;
-     });
+    	});
 
    });
 
 });
+function showsub(a)
+{
+	var b=a.replace("grade","")
+	document.getElementById("sub"+b).style.display="block";
+}
+function showchap(a)
+{
+	var b=a.replace("sub","")
+	document.getElementById("chap"+b).style.display="block";
+}
+function showques(a)
+{
+	var b=a.replace("chap","")
+	document.getElementById("ques"+b).style.display="block";
+}
 </script>
 
 </body>
