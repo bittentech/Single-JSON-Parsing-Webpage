@@ -6,7 +6,7 @@ html {
 
 body{
     padding-top:100px;
-    background:url("technovate.gif");
+    background:rgba(244, 205, 174);
     background-repeat : no-repeat;
     background-size : cover;
     background-attachment: fixed

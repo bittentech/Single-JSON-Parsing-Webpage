@@ -3,6 +3,9 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/bootstrap.min.js"></script>
  <title>
 Parso JSON
 </title>
@@ -11,40 +14,93 @@ Parso JSON
 <script>
 var data=new Array();
 </script>
-<div class='signup'>
+<!--div class='signup'>
 <h4>Signup</h4>
 <input type='text' name='username' id='user'>
 <input type='password' name='password' id='pass'>
 
 <button id='signup'>Signup</button>
 <div id='d1'></div>
-</div>
+</div-->
+<center>
+				<div class='col-xs-6'>
+                    <div class='signup' class="col-xs-6">
+                        <div class="panel panel-primary" >
+                            <div class="panel-heading">
+                                <h4>Signup</h4>
+                            </div>
+                            <div class="panel-body">
+                               
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"  placeholder="Username" name="username" id='user' required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password" name="password" id='pass' required>
+                                    </div>
+                                    <div id="form-group">
+                                        
+                                    </div>
+                                    <button id='signup' class="btn btn-primary">Signup</button>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
 
-<div class='login'>
+				<div class='col-xs-6'>
+                    <div class='login' class="col-xs-6">
+                        <div class="panel panel-primary" >
+                            <div class="panel-heading">
+                                <h4>Login</h4>
+                            </div>
+                            <div class="panel-body">
+                               
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"  placeholder="Username" name="username" id='luser' required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password" name="password" id='lpass' required>
+                                    </div>
+                                    <div id="form-group">
+                                        
+                                    </div>
+                                    <button id='login' class="btn btn-primary">Login</button>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+</center>
+<!--div class='login'>
 <h4>Login</h4>
 <input type='text' name='lusername' id='luser'>
 <input type='password' name='lpassword' id='lpass'>
 
 <button id='login'>Login</button>
 <div id='d1'></div>
-</div>
+</div-->
 
 <div class='content'>
-<h4>Login</h4>
-<input type='text' name='lusername' id='luser'>
-<input type='password' name='lpassword' id='lpass'>
 
-<button id='login'>Login</button>
-<div id='d1'></div>
+<div class='left-nav' align='left' style="border:2px solid black; margin:10px;padding :10px;">
+<h2><b><center>Content</center></b></h2>
+
+
+</div>
+<div id='d3'></div>
 </div>
 <script>
 $(".login").hide();
+$(".left-nav").hide();
+$(".content").hide();
 $('#signup').click(function(){
 	var user=$("#user").val();
 	var pass=$("#pass").val();
 	data.push(user);
 	data.push(pass);
-	$("#d1").html("User added!");
+	$("#form-group").html("User added!");
 	$(".login").show();
 });
 var f=0;
@@ -62,6 +118,11 @@ $('#login').click(function(){
 				
 				alert("successfull!");
 				f=1;
+				$(".login").hide();
+				$(".signup").hide();
+				$(".content").show();
+				$(".left-nav").show();
+			
 				break;
 			}
 			
@@ -74,5 +135,44 @@ $('#login').click(function(){
 	
 });
 </script>
+<script>
+
+    $(function() {
+
+
+
+
+   $.getJSON('json.json', function(data) {
+    var i1=0;
+       $.each(data.gradesList, function(i, f) {
+       	var dgrade=document.createElement("div");
+       	dgrade.setAttribute("id","dgrade"+i1);
+       	var grade=document.createElement("li");
+       	grade.setAttribute("id","grade"+i1);
+      
+       	grade.innerHTML=f.name;
+       	document.getElementsByClassName("left-nav")[0].appendChild(dgrade);
+	document.getElementById("dgrade"+i1).appendChild(grade);
+	var j=0;
+ $.each(data.gradesList[i1].subjectList, function(i, f) {
+ 	
+ 		var dsub=document.createElement("div");
+ 			dsub.setAttribute("id","dsub"+j);
+       	var subjects=document.createElement("li");
+       	subjects.setAttribute("id","sub"+j);
+       	subjects.innerHTML=f.name;
+       	subjects.setAttribute("style","display:none;");
+       	document.getElementById("grade"+i1).appendChild(dsub);
+            document.getElementById("dsub"+j).appendChild(subjects);
+           j++;
+       });
+ 		i1++;
+     });
+
+   });
+
+});
+</script>
+
 </body>
 </html>
