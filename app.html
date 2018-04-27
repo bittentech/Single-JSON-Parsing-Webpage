@@ -13,18 +13,15 @@ Parso JSON
 <body>
 <script>
 var data=new Array();
-</script>
-<!--div class='signup'>
-<h4>Signup</h4>
-<input type='text' name='username' id='user'>
-<input type='password' name='password' id='pass'>
 
-<button id='signup'>Signup</button>
-<div id='d1'></div>
-</div-->
+</script>
+
 <center>
+<h1>Welcome!</h1>
+<div class='content'>
+
 				<div class='col-xs-6'>
-                    <div class='signup' class="col-xs-6">
+                    <div class='signup' class="col-xs-6" style='display:none;'>
                         <div class="panel panel-primary" >
                             <div class="panel-heading">
                                 <h4>Signup</h4>
@@ -72,30 +69,28 @@ var data=new Array();
                         </div>
                     </div>
                 </div>
-</center>
-<!--div class='login'>
-<h4>Login</h4>
-<input type='text' name='lusername' id='luser'>
-<input type='password' name='lpassword' id='lpass'>
 
-<button id='login'>Login</button>
-<div id='d1'></div>
-</div-->
+</div>
+</center>
 
 <div class='row' style="border:2px solid black;margin:10px;font-family: 'Acme';">
 
-<div class='left-nav col-xs-4 ndiv' align='left' style="border:2px solid black; margin:2px;padding :10px;">
-<h2><b><center>Content</center></b></h2>
+<div class='left-nav col-xs-4 ndiv' align='left' style="border:2px solid black;">
+<h4><b><center>Content</center></b></h4>
 
 
 </div>
-<div class='right-nav col-xs-7 ndiv' style="border:2px solid black; margin:2px;padding :10px;">
-<h2><b><center>Question/Answer</center></b></h2>
+<div class='right-nav col-xs-8 ndiv' style="border:2px solid black;">
+<h4><b><center>Question/Answer</center></b></h4>
 
 
 </div>
 </div>
 <script>
+$(".signup").hide();
+$(document).ready(function(){
+$(".signup").fadeIn(2000);
+});
 $(".login").hide();
 $(".left-nav").hide();
 $(".row").hide();
@@ -104,8 +99,12 @@ $('#signup').click(function(){
 	var pass=$("#pass").val();
 	data.push(user);
 	data.push(pass);
-	$("#form-group").html("User added!");
-	$(".login").show();
+	$("#form-group").html("<h4>User added!</h4>");
+	
+
+	
+	$(".login").fadeIn(2000);
+	
 });
 var f=0;
 $('#login').click(function(){
@@ -120,7 +119,7 @@ $('#login').click(function(){
 			if(data[i+1]==pass)
 			{
 				
-				alert("successfull!");
+				alert("Login Successful!");
 				f=1;
 				$(".login").hide();
 				$(".signup").hide();
@@ -161,58 +160,10 @@ $(function() {
        	document.getElementsByClassName("left-nav")[0].appendChild(dgrade);
 		document.getElementById("d"+f.name).appendChild(grade);
 		var dsub=document.createElement("div");
-		dsub.setAttribute("style","margin-left:10px;");
+		dsub.setAttribute("style","margin-left:20px;");
 		dsub.setAttribute("id","ds"+f.name);
 		document.getElementById("d"+f.name).appendChild(dsub);
-		/*var p=0;
- 		$.each(data.gradesList[i1].subjectList, function(i, f) {
-       		var subjects=document.createElement("li");
-       		subjects.setAttribute("class","sub"+i1);
-       		subjects.setAttribute("onclick","showchap(this.id)");
-       		subjects.innerHTML=f.name;
-       		subjects.setAttribute("style","display:none;");
-            document.getElementById("dsub"+i1).appendChild(subjects);
-           	var dchap=document.createElement("div");
-           	dchap.setAttribute("id","dchap"+j);
-          
-           
-           	l++;
-           		
-
-           		$.each(data.gradesList[i1].subjectList[p].chapterList, function(i, f) {
-       			var chap=document.createElement("li");
-       			chap.setAttribute("class","chap"+i1);
-       			chap.innerHTML=f.name;
-       			chap.setAttribute("onclick","showques(this.id)");
-       			chap.setAttribute("style","display:none;");
-            	document.getElementById("dchap"+k).appendChild(chap);
-            	var dques=document.createElement("div");
-           		dques.setAttribute("id","dques"+j);
-           		document.getElementsByClassName("right-nav")[0].appendChild(dques);
-           		
-
-           			var q=0;
-           			
-            		$.each(data.gradesList[i1].subjectList[p].chapterList[q].questionList, function(i, f) {
-       				
-       				var ques=document.createElement("div");
-       				ques.setAttribute("id","ques"+k);
-       				ques.innerHTML="Q)."+f.question+"<br>Ans)."+f.answer;
-
-       				ques.setAttribute("style","display:none;");
-            		document.getElementById("dques"+k).appendChild(ques);
-            		
-
-            		q++;
-            		});
-            	p++;
-           		k++;
-       			});
-
-           	j++;
-       		});*/
-
- 		
+		
     	});
 
    });
@@ -232,7 +183,7 @@ function showsub(a)
  			
  			$.each(data.gradesList[p].subjectList, function(i, f) {
        		var subjects=document.createElement("li");
-       		subjects.setAttribute("style","font-size:15px;");
+       		subjects.setAttribute("style","font-size:15px;list-style-type: circle;");
        		subjects.setAttribute("id",f.name);
        		subjects.setAttribute("onclick","showchap(this.id)");
        		subjects.innerHTML=f.name;
@@ -240,7 +191,7 @@ function showsub(a)
             document.getElementById("ds"+a).appendChild(subjects);
 
            	var dchap=document.createElement("div");
-           	dchap.setAttribute("style","margin-left:10px;");
+           	dchap.setAttribute("style","margin-left:20px;");
            	dchap.setAttribute("id","dc"+f.name);
            	var o="ds"+a;
         	document.getElementById(o).appendChild(dchap);
@@ -275,7 +226,7 @@ function showchap(a)
        		
             document.getElementById("dc"+a).appendChild(chap);
            	var dques=document.createElement("div");
-          	dques.setAttribute("style","margin-left:10px;");
+          	dques.setAttribute("style","margin-left:20px;");
            	dques.setAttribute("class","dq");
            	document.getElementsByClassName("right-nav")[0].appendChild(dques);
            	});

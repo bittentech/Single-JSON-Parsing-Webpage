@@ -1291,7 +1291,7 @@ h3,
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 25px;
 }
 h5,
 .h5 {
@@ -6854,7 +6854,7 @@ button.close {
 }
 @media screen and (max-width: 768px) {
     .ndiv{
-        height:150px;
+        height:350px;
         
     }
 }
