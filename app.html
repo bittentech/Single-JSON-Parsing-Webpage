@@ -99,7 +99,7 @@ var data=new Array();
                                
                                     <div class="form-group">
                                         <select class="form-control" name="grade" id='grade' required>
-                                        <option selected>Select grade..</option>
+                                        <option value='' selected>Select grade..</option>
                                         <option value='11'>11</option>
                                         <option value='12'>12</option>
                                         </select>
@@ -145,6 +145,8 @@ $('#add').click(function(){
 	var question=$("#question").val();
 	var answer=$("#answer").val();
 
+	if(grade!="" && subject!="" && chapter!="" && question!="" && answer!="")
+	{
 	//Subjects
 	var subjects=document.createElement("li");
     subjects.setAttribute("style","font-size:15px;list-style-type: circle;");
@@ -184,8 +186,11 @@ $('#add').click(function(){
 	});
 
 	$("#form-groupa").html("<h4><font color='green'>Data added!</font></h4>");
+	}
+	else
+		$("#form-groupa").html("<h4><font color='red'>Please enter complete information</font></h4>");
+	});
 
-});
 $('#signup').click(function(){
 	var user=$("#user").val();
 	var pass=$("#pass").val();
