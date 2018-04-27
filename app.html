@@ -147,7 +147,7 @@ $(function() {
 	var j=0;
 	var k=0;
 	var l=0;
-   	$.getJSON('json.json', function(data) {
+   	$.getJSON('json.txt', function(data) {
    		
        	$.each(data.gradesList, function(i, f) {
        	var dgrade=document.createElement("div");
@@ -173,7 +173,7 @@ function showsub(a)
 {
 	document.getElementById("ds"+a).innerHTML="";
 	$(function() {
-   	$.getJSON('json.json', function(data) {
+   	$.getJSON('json.txt', function(data) {
 	var p=0;
 	
  		$.each(data.gradesList[p].subjectList, function(i, f) {
@@ -206,7 +206,7 @@ function showchap(a)
 {
 	document.getElementById("dc"+a).innerHTML='';
 	$(function() {
-   	$.getJSON('json.json', function(data) {
+   	$.getJSON('json.txt', function(data) {
 	for(var p=0;p<data.gradesList.length;p++)
 	{
 		for(var q=0;q<data.gradesList[p].subjectList.length;q++)
@@ -246,7 +246,7 @@ function showques(a)
 	});
    var arr=new Array();
 	$(function() {
-   		$.getJSON('json.json', function(data) {
+   		$.getJSON('json.txt', function(data) {
 		for(var p=0;p<data.gradesList.length;p++)
 		{
 			for(var q=0;q<data.gradesList[p].subjectList.length;q++)
