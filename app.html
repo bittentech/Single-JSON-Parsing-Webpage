@@ -99,7 +99,7 @@ $('#signup').click(function(){
 	var pass=$("#pass").val();
 	data.push(user);
 	data.push(pass);
-	$("#form-group").html("<h4>User added!</h4>");
+	$("#form-group").html("<h4><font color='green'>User added!</font></h4>");
 	
 
 	
@@ -244,6 +244,7 @@ function showques(a)
 	$(".dq").each(function(i,obj){
 		obj.innerHTML="";
 	});
+   var arr=new Array();
 	$(function() {
    		$.getJSON('json.json', function(data) {
 		for(var p=0;p<data.gradesList.length;p++)
@@ -253,20 +254,37 @@ function showques(a)
 				for(var r=0;r<data.gradesList[p].subjectList[q].chapterList.length;r++)
 				{
            			$.each(data.gradesList[p].subjectList[q].chapterList, function(i, f) {
+                 
+                  arr.push(f.name);
+                  
        					if(data.gradesList[p].subjectList[q].chapterList[r].name==a)
        					{
-       						$.each(data.gradesList[p].subjectList[q].chapterList[r].questionList, function(i, f) {
+
+       						$.each(data.gradesList[p].subjectList[q].chapterList[r].questionList, function(i, h) {
        							var ques=document.createElement("div");
        							ques.setAttribute("style","font-size:15px;");
        							ques.setAttribute("class","ques"+r);
-       							ques.innerHTML="Q). "+f.question+"<br>Ans). "+f.answer+"<br><br>";
+       							ques.innerHTML="Q). "+h.question+"<br>Ans). "+h.answer+"<br><br>";
             					document.getElementsByClassName("dq")[r].appendChild(ques);
             				});
+                    
+                  
             			}
             		});
+
+                
             	}
             }
         }
+
+        for(var k=0;k<arr.length;k++)
+        {
+            if(document.getElementById(arr[k]))
+            {
+            document.getElementById(arr[k]).style.color='#000';
+          }
+        }
+        document.getElementById(a).style.color='red';
     });
    	});
 }
