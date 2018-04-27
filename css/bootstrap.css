@@ -14,13 +14,13 @@ html {
   margin-top : 5%;
 }
 #content{
-  font-family: 'Acme';font-size: 15px;
+  font-family: 'Acme';
   margin-right : 10%;
   margin-left: 10%;
 }
 .content{
   font-family: 'Acme';
-  font-size: 15px;
+
   margin-right : 5%;
   margin-left:5%;
 }
@@ -1098,7 +1098,7 @@ html {
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
@@ -6843,5 +6843,18 @@ button.close {
 @media screen and (max-width: 568px) {
        body {
     font-size:60px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .ndiv{
+        height:250px;
+
+    }
+}
+@media screen and (max-width: 768px) {
+    .ndiv{
+        height:150px;
+        
     }
 }
