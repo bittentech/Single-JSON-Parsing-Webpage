@@ -6848,13 +6848,13 @@ button.close {
 
 @media screen and (min-width: 1024px) {
     .ndiv{
-        height:250px;
+        height:350px;
 
     }
 }
 @media screen and (max-width: 768px) {
     .ndiv{
-        height:350px;
+        max-height:450px;
         
     }
 }

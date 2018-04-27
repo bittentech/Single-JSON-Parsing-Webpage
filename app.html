@@ -70,6 +70,8 @@ var data=new Array();
                     </div>
                 </div>
 
+                
+
 </div>
 </center>
 
@@ -86,14 +88,104 @@ var data=new Array();
 
 </div>
 </div>
+<center>
+<div class='col-xs-6'>
+                    <div class='add' class="col-xs-6">
+                        <div class="panel panel-primary" >
+                            <div class="panel-heading">
+                                <h4>Add data</h4>
+                            </div>
+                            <div class="panel-body">
+                               
+                                    <div class="form-group">
+                                        <select class="form-control" name="grade" id='grade' required>
+                                        <option selected>Select grade..</option>
+                                        <option value='11'>11</option>
+                                        <option value='12'>12</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Subject" name="password" id='subject' required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Chapter" name="password" id='chapter' required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Question" name="question" id='question' required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Answer" name="password" id='answer' required>
+                                    </div>
+                                    <div id="form-groupa">
+                                        
+                                    </div>
+                                    <button id='add' class="btn btn-primary">Add</button>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+</center>
 <script>
 $(".signup").hide();
+$(".add").hide();
 $(document).ready(function(){
 $(".signup").fadeIn(2000);
 });
 $(".login").hide();
 $(".left-nav").hide();
 $(".row").hide();
+$('#add').click(function(){
+	var grade=$("#grade").val();
+	var subject=$("#subject").val();
+	var chapter=$("#chapter").val();
+	var question=$("#question").val();
+	var answer=$("#answer").val();
+
+	//Subjects
+	var subjects=document.createElement("li");
+    subjects.setAttribute("style","font-size:15px;list-style-type: circle;");
+    subjects.setAttribute("id",subject);
+    subjects.setAttribute("onclick","showchap(this.id)");
+    subjects.innerHTML=subject;		
+    document.getElementById("dsGrade "+grade).appendChild(subjects);
+    var dchap=document.createElement("div");
+    dchap.setAttribute("style","margin-left:20px;");
+    dchap.setAttribute("id","dc"+subject);
+    var o="dsGrade "+grade;
+    document.getElementById(o).appendChild(dchap);
+
+	//Chapters
+
+
+       		var chap=document.createElement("li");
+       		chap.setAttribute("style","font-size:15px;");
+       		chap.setAttribute("id",chapter);
+       		chap.setAttribute("onclick","showques(this.id)");
+       		chap.innerHTML=chapter;
+       		
+            document.getElementById("dc"+subject).appendChild(chap);
+           	var dques=document.createElement("div");
+          	dques.setAttribute("style","margin-left:20px;");
+           	dques.setAttribute("class","dq");
+           	document.getElementsByClassName("right-nav")[0].appendChild(dques);
+
+    //Questions
+
+    var ques=document.createElement("div");
+    ques.setAttribute("style","font-size:15px;");
+    ques.setAttribute("class","ques0");
+    ques.innerHTML="Q). "+question+"<br>Ans). "+answer+"<br><br>";
+    $(".dq").each(function(i,j){
+    j.appendChild(ques);
+	});
+
+	$("#form-groupa").html("<h4><font color='green'>Data added!</font></h4>");
+
+});
 $('#signup').click(function(){
 	var user=$("#user").val();
 	var pass=$("#pass").val();
@@ -125,6 +217,7 @@ $('#login').click(function(){
 				$(".signup").hide();
 				$(".row").show();
 				$(".left-nav").show();
+				$(".add").show();
 			
 				break;
 			}
