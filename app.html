@@ -194,9 +194,18 @@ $('#add').click(function(){
 $('#signup').click(function(){
 	var user=$("#user").val();
 	var pass=$("#pass").val();
-	data.push(user);
-	data.push(pass);
-	$("#form-group").html("<h4><font color='green'>User added!</font></h4>");
+  if(user=="" || pass=="")
+  {
+    $("#form-group").html("<h4><font color='red'>Please enter proper credentials!</font></h4>");
+	
+  }
+  else 
+  {
+  data.push(user);
+  data.push(pass);
+
+  $("#form-group").html("<h4><font color='green'>User added!</font></h4>");
+}
 	
 
 	
@@ -207,6 +216,12 @@ var f=0;
 $('#login').click(function(){
 	var user=$("#luser").val();
 	var pass=$("#lpass").val();
+  if(user=="" || pass=="")
+  {
+    alert("Please enter proper credentials");
+  }
+  else
+  {
 	for(var i=0;i<data.length;i++)
 	{
 
@@ -232,7 +247,9 @@ $('#login').click(function(){
 	}
 	if(f==0)
 			alert("Incorrect credentials");
-	
+	}
+  
+    
 	
 });
 </script>
